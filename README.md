@@ -1,5 +1,5 @@
-# Neobis
-## 10th
+# Neobis 10th
+## 10.06.2020 by Toktogaziev Islam
 ![wallhaven-229219](https://user-images.githubusercontent.com/66562289/84225865-12af8b00-ab02-11ea-8bba-008353eeb302.jpg)
 ```
 public static void Hello_world(){
