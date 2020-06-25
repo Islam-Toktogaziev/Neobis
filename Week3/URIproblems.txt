@@ -1,0 +1,62 @@
+2602 - Basic Select
+
+select name from customers 
+where state = 'RS';
+------------------------------------------------
+2603 - Customer Address
+
+select name,street from customers
+where city = 'Porto Alegre';
+------------------------------------------------
+2604 - Under 10 or Greater Than 100
+
+select id, name from products
+where price < 10 or price >100;
+------------------------------------------------
+2605 - Executive Representatives
+
+select name, (select name from providers 
+where products.id_providers = providers.id) as name
+from products
+where id_categories = 6;
+------------------------------------------------
+2606 - Categories
+
+select id, name from products
+where id_categories in (select id from categories
+where name like 'super%');
+------------------------------------------------
+2607 - Providers' City in Alphabetical Order
+
+select city from providers
+order by city;
+------------------------------------------------
+2608 - Higher and Lower Price
+
+select max(price),min(price) from products;
+------------------------------------------------
+2610 - Average Value of Products
+
+select round(avg(price),2) from products
+------------------------------------------------
+2611 - Action Movies
+
+select id,name from movies
+where id_genres = (select id from genres 
+where description = 'Action');
+------------------------------------------------
+2613 - Cheap Movies
+
+select id,name from movies
+where id_prices = (select id from prices
+where value <2.00);
+------------------------------------------------
+2615 - Expanding the Business
+
+select distinct city from customers;
+------------------------------------------------
+2616 - No Rental
+
+select id,name from customers
+where id not in (select id_customers from locations);
+------------------------------------------------

@@ -1,0 +1,53 @@
+Select all
+
+SELECT *
+FROM CITY;
+------------------------------------------------
+Select By ID
+
+SELECT * 
+FROM CITY WHERE ID = 1661;
+------------------------------------------------
+Japanese Cities’ Attributes
+
+select *
+from CITY where COUNTRYCODE = 'JPN';
+------------------------------------------------
+Japanese Cities’ Names
+
+Select name
+from CITY where COUNTRYCODE = 'JPN';
+------------------------------------------------
+Weather Observation Station 1
+
+select CITY, STATE 
+from STATION;
+------------------------------------------------
+Weather Observation Station 3
+
+select distinct CITY 
+from STATION where (id%2)=0;
+------------------------------------------------
+Weather Observation Station 5
+
+select CITY, length(CITY) from STATION 
+order by length(CITY),CITY limit 1;
+
+select CITY,length(CITY) from STATION
+order by length(CITY) desc, CITY asc limit 1;
+------------------------------------------------
+Weather Observation Station 7
+
+select distinct CITY from STATION
+where CITY regexp '[aeiou]$';
+------------------------------------------------
+Higher Than 75 Marks
+
+select Name from STUDENTS
+where Marks > 75 order by right(Name,3), id;
+------------------------------------------------
+Employee Names
+
+select name 
+from Employee order by name;
+
