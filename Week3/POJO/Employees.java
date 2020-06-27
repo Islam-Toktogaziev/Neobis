@@ -63,13 +63,17 @@ public class Employees {
         Number = number;
     }
 
+    public Employees(){
+
+    }
+
     public Employees(long employeeId, String employeeName, String position, String salary, String adress, String email, String number) {
-        EmployeeId = employeeId;
-        EmployeeName = employeeName;
-        Position = position;
+        this.EmployeeId = employeeId;
+        this.EmployeeName = employeeName;
+        this. Position = position;
         this.salary = salary;
-        Adress = adress;
-        Email = email;
-        Number = number;
+        this.Adress = adress;
+        this.Email = email;
+        this.Number = number;
     }
 }

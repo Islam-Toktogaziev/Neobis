@@ -54,12 +54,16 @@ public class Customers {
         Number = number;
     }
 
+    public Customers(){
+
+    }
+
     public Customers(long customerId, String customerName, String reputation, String adress, String email, String number) {
-        CustomerId = customerId;
-        CustomerName = customerName;
-        Reputation = reputation;
-        Adress = adress;
-        Email = email;
-        Number = number;
+        this.CustomerId = customerId;
+        this.CustomerName = customerName;
+        this.Reputation = reputation;
+        this.Adress = adress;
+        this.Email = email;
+        this.Number = number;
     }
 }

@@ -45,6 +45,10 @@ public class Car {
         this.engineDisplacement = engineDisplacement;
     }
 
+    public Car(){
+
+    }
+
     public Car(long carId, String carNumber, String cartype, String color, String engineDisplacement) {
         this.carId = carId;
         this.carNumber = carNumber;
