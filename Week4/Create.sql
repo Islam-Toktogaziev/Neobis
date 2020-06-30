@@ -3,28 +3,40 @@ create database AvtoShop;
 use AvtoShop;
 
 CREATE TABLE Customers (
-  CustomerID NUMERIC,
-  CustomerName VARCHAR(40),
-  Reputation VARCHAR(40),
-  Adress VARCHAR(40),
-  Email VARCHAR(20),
-  Number VARCHAR(15)
+  CustomerID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  CustomerName VARCHAR(40) NOT NULL,
+  Reputation VARCHAR(40) NOT NULL,
+  Adress VARCHAR(40) NOT NULL,
+  Email VARCHAR(20) NOT NULL,
+  Phone VARCHAR(15) NOT NULL,
+  UNIQUE(Email, Phone)
 );
 
 CREATE TABLE Emlpoyees (
-  EmlpoyeeID NUMERIC,
-  EmlpoyeeName VARCHAR(40),
-  Position VARCHAR(40),
-  Salary DOUBLE,
-  Adress VARCHAR(40),
-  Email VARCHAR(20),
-  Number VARCHAR(15)
+  EmlpoyeeID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  EmlpoyeeName VARCHAR(40) NOT NULL,
+  Position VARCHAR(40) NOT NULL,
+  Salary DOUBLE NOT NULL,
+  Adress VARCHAR(40) NOT NULL,
+  Email VARCHAR(20) NOT NULL,
+  Phone VARCHAR(15) NOT NULL,
+  UNIQUE(Email, Phone)
 );
 
 CREATE TABLE Cars (
-  CarID NUMERIC,
-  CarName VARCHAR(40),
-  CarType VARCHAR(40),
-  Color VARCHAR(40),
-  EngineDisplacement DOUBLE
+  CarID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  CarName VARCHAR(40) NOT NULL,
+  CarType VARCHAR(40) NOT NULL,
+  Color VARCHAR(40) NOT NULL,
+  EngineDisplacement DOUBLE NOT NULL
+);
+
+CREATE TABLE Contracts (
+  ContractID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  EmployeeID INT UNSIGNED,
+  CustomerID INT UNSIGNED,
+  CarID INT UNSIGNED,
+  FOREIGN KEY (EmployeeID)  REFERENCES Emlpoyees (EmlpoyeeID),
+  FOREIGN KEY (CustomerID)  REFERENCES Customers (CustomerID),
+  FOREIGN KEY (CarID)  REFERENCES Cars (CarID)
 );
