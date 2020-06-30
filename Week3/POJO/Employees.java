@@ -2,10 +2,23 @@ public class Employees {
     private long EmployeeId;
     private String EmployeeName;
     private String Position;
-    private String salary;
+    private double salary;
     private String Adress;
     private String Email;
     private String Number;
+
+    public Employees() {
+    }
+
+    public Employees(long employeeId, String employeeName, String position, double salary, String adress, String email, String number) {
+        this.EmployeeId = employeeId;
+        this.EmployeeName = employeeName;
+        this.Position = position;
+        this.salary = salary;
+        this.Adress = adress;
+        this.Email = email;
+        this.Number = number;
+    }
 
     public long getEmployeeId() {
         return EmployeeId;
@@ -31,11 +44,11 @@ public class Employees {
         Position = position;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
@@ -63,13 +76,4 @@ public class Employees {
         Number = number;
     }
 
-    public Employees(long employeeId, String employeeName, String position, String salary, String adress, String email, String number) {
-        EmployeeId = employeeId;
-        EmployeeName = employeeName;
-        Position = position;
-        this.salary = salary;
-        Adress = adress;
-        Email = email;
-        Number = number;
-    }
 }

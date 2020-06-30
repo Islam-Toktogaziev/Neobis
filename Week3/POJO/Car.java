@@ -1,9 +1,21 @@
 public class Car {
     private long carId;
-    private String carNumber;
+    private String carName;
     private String cartype;
     private String color;
-    private String engineDisplacement;
+    private double engineDisplacement;
+
+    public Car(){
+
+    }
+
+    public Car(long carId, String carName, String cartype, String color, double engineDisplacement) {
+        this.carId = carId;
+        this.carName = carName;
+        this.cartype = cartype;
+        this.color = color;
+        this.engineDisplacement = engineDisplacement;
+    }
 
     public long getCarId() {
         return carId;
@@ -13,12 +25,12 @@ public class Car {
         this.carId = carId;
     }
 
-    public String getCarNumber() {
-        return carNumber;
+    public String getCarName() {
+        return carName;
     }
 
-    public void setCarNumber(String carNumber) {
-        this.carNumber = carNumber;
+    public void setCarName(String carName) {
+        this.carName = carName;
     }
 
     public String getCartype() {
@@ -37,19 +49,12 @@ public class Car {
         this.color = color;
     }
 
-    public String getEngineDisplacement() {
+    public double getEngineDisplacement() {
         return engineDisplacement;
     }
 
-    public void setEngineDisplacement(String engineDisplacement) {
+    public void setEngineDisplacement(double engineDisplacement) {
         this.engineDisplacement = engineDisplacement;
     }
 
-    public Car(long carId, String carNumber, String cartype, String color, String engineDisplacement) {
-        this.carId = carId;
-        this.carNumber = carNumber;
-        this.cartype = cartype;
-        this.color = color;
-        this.engineDisplacement = engineDisplacement;
-    }
 }

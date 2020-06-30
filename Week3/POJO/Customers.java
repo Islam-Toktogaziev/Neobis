@@ -1,17 +1,29 @@
 public class Customers {
-    private long CustomerId;
+    private long CustomerID;
     private String CustomerName;
     private String Reputation;
     private String Adress;
     private String Email;
     private String Number;
 
-    public long getCustomerId() {
-        return CustomerId;
+    public Customers() {
     }
 
-    public void setCustomerId(long customerId) {
-        CustomerId = customerId;
+    public Customers(long customerId, String customerName, String reputation, String adress, String email, String number) {
+        this.CustomerID = customerId;
+        this.CustomerName = customerName;
+        this.Reputation = reputation;
+        this.Adress = adress;
+        this.Email = email;
+        this.Number = number;
+    }
+
+    public long getCustomerID() {
+        return CustomerID;
+    }
+
+    public void setCustomerId(long customerID) {
+        CustomerID = customerID;
     }
 
     public String getCustomerName() {
@@ -54,12 +66,4 @@ public class Customers {
         Number = number;
     }
 
-    public Customers(long customerId, String customerName, String reputation, String adress, String email, String number) {
-        CustomerId = customerId;
-        CustomerName = customerName;
-        Reputation = reputation;
-        Adress = adress;
-        Email = email;
-        Number = number;
-    }
 }
