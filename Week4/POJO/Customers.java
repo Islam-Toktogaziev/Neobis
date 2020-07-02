@@ -1,69 +1,68 @@
 public class Customers {
-    private long CustomerID;
-    private String CustomerName;
-    private String Reputation;
-    private String Adress;
-    private String Email;
-    private String Number;
+    private long customerID;
+    private String customerName;
+    private long reputationID;
+    private String address;
+    private String email;
+    private String number;
 
     public Customers() {
     }
 
-    public Customers(long customerId, String customerName, String reputation, String adress, String email, String number) {
-        this.CustomerID = customerId;
-        this.CustomerName = customerName;
-        this.Reputation = reputation;
-        this.Adress = adress;
-        this.Email = email;
-        this.Number = number;
+    public Customers(long customerID, String customerName, long reputationID, String address, String email, String number) {
+        this.customerID = customerID;
+        this.customerName = customerName;
+        this.reputationID = reputationID;
+        this.address = address;
+        this.email = email;
+        this.number = number;
     }
 
     public long getCustomerID() {
-        return CustomerID;
+        return customerID;
     }
 
-    public void setCustomerId(long customerID) {
-        CustomerID = customerID;
+    public void setCustomerID(long customerID) {
+        this.customerID = customerID;
     }
 
     public String getCustomerName() {
-        return CustomerName;
+        return customerName;
     }
 
     public void setCustomerName(String customerName) {
-        CustomerName = customerName;
+        this.customerName = customerName;
     }
 
-    public String getReputation() {
-        return Reputation;
+    public long getReputationID() {
+        return reputationID;
     }
 
-    public void setReputation(String reputation) {
-        Reputation = reputation;
+    public void setReputationID(long reputationID) {
+        this.reputationID = reputationID;
     }
 
-    public String getAdress() {
-        return Adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        Adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(String number) {
-        Number = number;
+        this.number = number;
     }
-
 }

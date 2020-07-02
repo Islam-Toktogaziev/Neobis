@@ -1,28 +1,29 @@
 public class Car {
-    private long carId;
+    private long carID;
     private String carName;
-    private String cartype;
+    private long typeID;
     private String color;
+    private long priceID;
     private double engineDisplacement;
 
     public Car(){
-
     }
 
-    public Car(long carId, String carName, String cartype, String color, double engineDisplacement) {
-        this.carId = carId;
+    public Car(long carID, String carName, long typeID, String color, long priceID, double engineDisplacement) {
+        this.carID = carID;
         this.carName = carName;
-        this.cartype = cartype;
+        this.typeID = typeID;
         this.color = color;
+        this.priceID = priceID;
         this.engineDisplacement = engineDisplacement;
     }
 
-    public long getCarId() {
-        return carId;
+    public long getCarID() {
+        return carID;
     }
 
-    public void setCarId(long carId) {
-        this.carId = carId;
+    public void setCarID(long carID) {
+        this.carID = carID;
     }
 
     public String getCarName() {
@@ -33,12 +34,12 @@ public class Car {
         this.carName = carName;
     }
 
-    public String getCartype() {
-        return cartype;
+    public long getTypeID() {
+        return typeID;
     }
 
-    public void setCartype(String cartype) {
-        this.cartype = cartype;
+    public void setTypeID(long typeID) {
+        this.typeID = typeID;
     }
 
     public String getColor() {
@@ -49,6 +50,14 @@ public class Car {
         this.color = color;
     }
 
+    public long getPriceID() {
+        return priceID;
+    }
+
+    public void setPriceID(long priceID) {
+        this.priceID = priceID;
+    }
+
     public double getEngineDisplacement() {
         return engineDisplacement;
     }
@@ -56,5 +65,4 @@ public class Car {
     public void setEngineDisplacement(double engineDisplacement) {
         this.engineDisplacement = engineDisplacement;
     }
-
 }

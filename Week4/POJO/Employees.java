@@ -1,47 +1,47 @@
 public class Employees {
-    private long EmployeeId;
-    private String EmployeeName;
-    private String Position;
+    private long employeeID;
+    private String employeeName;
+    private long positionID;
     private double salary;
-    private String Adress;
-    private String Email;
-    private String Number;
+    private String address;
+    private String email;
+    private String number;
 
     public Employees() {
     }
 
-    public Employees(long employeeId, String employeeName, String position, double salary, String adress, String email, String number) {
-        this.EmployeeId = employeeId;
-        this.EmployeeName = employeeName;
-        this.Position = position;
+    public Employees(long employeeID, String employeeName, long positionID, double salary, String address, String email, String number) {
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.positionID = positionID;
         this.salary = salary;
-        this.Adress = adress;
-        this.Email = email;
-        this.Number = number;
+        this.address = address;
+        this.email = email;
+        this.number = number;
     }
 
-    public long getEmployeeId() {
-        return EmployeeId;
+    public long getEmployeeID() {
+        return employeeID;
     }
 
-    public void setEmployeeId(long employeeId) {
-        EmployeeId = employeeId;
+    public void setEmployeeID(long employeeID) {
+        this.employeeID = employeeID;
     }
 
     public String getEmployeeName() {
-        return EmployeeName;
+        return employeeName;
     }
 
     public void setEmployeeName(String employeeName) {
-        EmployeeName = employeeName;
+        this.employeeName = employeeName;
     }
 
-    public String getPosition() {
-        return Position;
+    public long getPositionID() {
+        return positionID;
     }
 
-    public void setPosition(String position) {
-        Position = position;
+    public void setPositionID(long positionID) {
+        this.positionID = positionID;
     }
 
     public double getSalary() {
@@ -52,28 +52,27 @@ public class Employees {
         this.salary = salary;
     }
 
-    public String getAdress() {
-        return Adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        Adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getNumber() {
-        return Number;
+        return number;
     }
 
     public void setNumber(String number) {
-        Number = number;
+        this.number = number;
     }
-
 }
