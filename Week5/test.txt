@@ -6,7 +6,7 @@
 
 4. Add dependencies in pom.xml
 
-5. Create main class with main method
+5. Create JDBC class with main method
 
 6. Connecting with Database
 
