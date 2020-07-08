@@ -1,14 +1,12 @@
 public class Region {
     private long regionID;
-    private long customerID;
     private String region;
 
     public Region() {
     }
 
-    public Region(long regionID, long customerID, String region) {
+    public Region(long regionID, String region) {
         this.regionID = regionID;
-        this.customerID = customerID;
         this.region = region;
     }
 
@@ -18,14 +16,6 @@ public class Region {
 
     public void setRegionID(long regionID) {
         this.regionID = regionID;
-    }
-
-    public long getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(long customerID) {
-        this.customerID = customerID;
     }
 
     public String getRegion() {

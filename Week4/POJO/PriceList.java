@@ -1,14 +1,12 @@
 public class PriceList {
     private long priceID;
-    private long carID;
     private double price;
 
     public PriceList() {
     }
 
-    public PriceList(long priceID, long carID, double price) {
+    public PriceList(long priceID, double price) {
         this.priceID = priceID;
-        this.carID = carID;
         this.price = price;
     }
 
@@ -18,14 +16,6 @@ public class PriceList {
 
     public void setPriceID(long priceID) {
         this.priceID = priceID;
-    }
-
-    public long getCarID() {
-        return carID;
-    }
-
-    public void setCarID(long carID) {
-        this.carID = carID;
     }
 
     public double getPrice() {

@@ -1,14 +1,12 @@
 public class Reputation {
     private long reputationID;
-    private long customerID;
     private String reputation;
 
     public Reputation() {
     }
 
-    public Reputation(long reputationID, long customerID, String reputation) {
+    public Reputation(long reputationID, String reputation) {
         this.reputationID = reputationID;
-        this.customerID = customerID;
         this.reputation = reputation;
     }
 
@@ -18,14 +16,6 @@ public class Reputation {
 
     public void setReputationID(long reputationID) {
         this.reputationID = reputationID;
-    }
-
-    public long getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(long customerID) {
-        this.customerID = customerID;
     }
 
     public String getReputation() {
