@@ -1,0 +1,42 @@
+1. Create database AvtoShop
+
+2. Create table Region
+
+3. Create Maven project on IntelijIDEA
+
+4. Add dependencies in pom.xml
+
+5. Create main class with main method
+
+6. Connecting with Database
+
+7. Add methods for add, update, delete and select from Database
+
+8. Test/Run
+
+Output:
+1 rows added 
+1 rows added 
+1 rows added 
+1 rows added 
+1 rows added 
+1 rows added 
+1 rows added 
+1 rows added 
+1. Chui area  
+2. Naryn  
+3. Issyk-Kul  
+4. Batken  
+5. Jalal-Abad  
+6. Talas  
+7. Osh  
+8. Bishkek  
+1 rows updated 
+1 rows deleted 
+1. Chui  
+2. Naryn  
+3. Issyk-Kul  
+4. Batken  
+5. Jalal-Abad  
+6. Talas  
+7. Osh  
