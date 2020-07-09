@@ -11,7 +11,6 @@ public class JDBC {
     private static int rows;
     public static void main(String[] args) {
         try {
-            connectionDB();
             addDB("Chui area");
             addDB("Naryn");
             addDB("Issyk-Kul");
@@ -31,20 +30,6 @@ public class JDBC {
 
         } catch (Exception e){
             e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) {
-                    connection.close();
-                }
-            } catch (SQLException e){
-            }
-            try {
-                if (connection != null){
-                    connection.close();
-                }
-            } catch (SQLException e){
-                e.printStackTrace();
-            }
         }
     }
 
@@ -61,6 +46,7 @@ public class JDBC {
 
     private static void addDB(String region){
         try {
+            connectionDB();
             statement = connection.prepareStatement("INSERT INTO Region (region) VALUES (?)");
             statement.setString(1, region);
             rows = statement.executeUpdate();
@@ -68,11 +54,27 @@ public class JDBC {
         }
         catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            try {
+                if (statement != null) {
+                    connection.close();
+                }
+            } catch (SQLException e){
+            }
+            try {
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
         }
     }
 
     private static void selectDB(){
         try {
+            connectionDB();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM Region");
             while(resultSet.next()){
                 int id = resultSet.getInt(1);
@@ -81,11 +83,26 @@ public class JDBC {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (statement != null) {
+                    connection.close();
+                }
+            } catch (SQLException e){
+            }
+            try {
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
         }
     }
 
     private static void updateDB(String region, int changeID){
         try {
+            connectionDB();
             statement = connection.prepareStatement("UPDATE Region SET region = ? WHERE region_ID = ?");
             statement.setString(1, region);
             statement.setInt(2, changeID);
@@ -94,11 +111,26 @@ public class JDBC {
         }
         catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            try {
+                if (statement != null) {
+                    connection.close();
+                }
+            } catch (SQLException e){
+            }
+            try {
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
         }
     }
 
     private static void deleteFromDB(int id){
         try {
+            connectionDB();
             statement = connection.prepareStatement("DELETE FROM Region WHERE region_ID = ?");
             statement.setInt(1, id);
             rows = statement.executeUpdate();
@@ -106,6 +138,20 @@ public class JDBC {
         }
         catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            try {
+                if (statement != null) {
+                    connection.close();
+                }
+            } catch (SQLException e){
+            }
+            try {
+                if (connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
         }
     }
 
