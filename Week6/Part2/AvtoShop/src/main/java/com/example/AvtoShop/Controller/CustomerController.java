@@ -5,8 +5,6 @@ import com.example.AvtoShop.CustomerRepository.CustomerRep;
 import com.example.AvtoShop.Exceptions.CustomerNotFoundException;
 import com.example.AvtoShop.Model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,25 +19,24 @@ public class CustomerController {
         this.customerRep = customerRep;
     }
 
-    @GetMapping ("/Customers")
+    @GetMapping ("/customers")
     List<Customer> all(){
         return customerRep.findAll();
     }
 
-    @GetMapping("/Customers/{id}")
-    Customer one(@PathVariable Long id) {
+    @GetMapping("/customers/{id}")
+    public Customer one(@PathVariable Long id) {
         return customerRep.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
 
-    @PostMapping("/Customers")
-    public ResponseEntity<?> create(@RequestBody Customer customer) {
-        customerRep.save(customer);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PostMapping("/customers")
+    public Customer newCustomer(@RequestBody Customer customer) {
+        return customerRep.save(customer);
     }
 
-    @PutMapping("/Customers/{id}")
+    @PutMapping("/customers/{id}")
     public Customer customerUpdate (@RequestBody Customer newCustomer, @PathVariable Long id){
         return customerRep.findById(id)
                 .map(customer -> {
@@ -56,7 +53,7 @@ public class CustomerController {
                 });
     }
 
-    @DeleteMapping("/Customers/{id}")
+    @DeleteMapping("/customers/{id}")
     void deleteCustomer(@PathVariable Long id) {
         customerRep.deleteById(id);
     }
