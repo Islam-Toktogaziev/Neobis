@@ -24,7 +24,7 @@ public class Shipping {
     private String shippingType;
     private double shippingCost;
 
-    @OneToOne (optional = false)
+    @ManyToOne (optional = false)
     @JoinColumn (name = "region_ID", referencedColumnName = "region_ID")
     private Region region;
 }

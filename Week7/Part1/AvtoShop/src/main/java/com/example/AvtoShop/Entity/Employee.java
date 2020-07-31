@@ -25,7 +25,7 @@ public class Employee {
 
     private String employeeName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn (name = "position_ID", referencedColumnName = "position_ID")
     private Position positionID;
 

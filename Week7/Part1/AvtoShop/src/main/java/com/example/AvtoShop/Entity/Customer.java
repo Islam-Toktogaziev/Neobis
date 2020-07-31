@@ -23,7 +23,7 @@ public class Customer {
     private Long customerID;
     private String customerName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn (name = "reputation_ID", referencedColumnName = "reputation_ID")
     private Reputation reputationID;
 

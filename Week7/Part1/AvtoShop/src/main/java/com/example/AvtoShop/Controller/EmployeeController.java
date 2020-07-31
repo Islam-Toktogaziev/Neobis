@@ -1,8 +1,6 @@
 package com.example.AvtoShop.Controller;
 
 
-
-
 import com.example.AvtoShop.Entity.Employee;
 import com.example.AvtoShop.Exceptions.ResourceNotFoundException;
 import com.example.AvtoShop.Repository.EmployeeRepository;
@@ -26,10 +24,10 @@ public class EmployeeController {
         return employeeRepository.findAll();
     }
 
-    @GetMapping("/employees/{id}")
-    public Employee one(@PathVariable Long id) {
-        return employeeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(id));
+    @GetMapping("/employees/{employeeID}")
+    public Employee one(@PathVariable Long employeeID) {
+        return employeeRepository.findById(employeeID)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find employee ", employeeID));
     }
 
 
@@ -38,9 +36,9 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
-    @PutMapping("/employees/{id}")
-    public Employee employeeUpdate (@RequestBody Employee newEmployee, @PathVariable Long id){
-        return employeeRepository.findById(id)
+    @PutMapping("/employees/{employeeID}")
+    public Employee employeeUpdate (@RequestBody Employee newEmployee, @PathVariable Long employeeID){
+        return employeeRepository.findById(employeeID)
                 .map(employee -> {
                     employee.setEmployeeName(newEmployee.getEmployeeName());
                     employee.setPositionID(newEmployee.getPositionID());
@@ -49,13 +47,13 @@ public class EmployeeController {
                     employee.setNumber(newEmployee.getNumber());
                     return employeeRepository.save(employee);
                 })
-                .orElseThrow(() -> new ResourceNotFoundException(id));
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find employee ", employeeID));
 
     }
 
-    @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id) {
-        employeeRepository.deleteById(id);
+    @DeleteMapping("/employees/{employeeID}")
+    void deleteEmployee(@PathVariable Long employeeID) {
+        employeeRepository.deleteById(employeeID);
     }
 
 }

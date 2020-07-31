@@ -20,6 +20,7 @@ public class CarType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CarType_seq")
     @Column (name = "car_Type_ID")
     private Long typeID;
+
     private String carType;
 
 }

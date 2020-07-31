@@ -24,11 +24,11 @@ public class Car {
 
     private String carName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn (name = "car_Type_ID", referencedColumnName = "car_Type_ID")
     private CarType carType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn (name = "price_ID", referencedColumnName = "price_ID")
     private PriceList priceID;
 

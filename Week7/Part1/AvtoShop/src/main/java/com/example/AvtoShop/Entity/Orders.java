@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Optional;
 
 
 @Getter
@@ -27,25 +24,17 @@ public class Orders extends AuditModel implements Serializable {
     @Column (name = "order_ID")
     private Long orderID;
 
-    @ManyToOne (fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn (name = "customer_ID", referencedColumnName = "customer_ID")
-    private Customer customer;
+    private Customer customerID;
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    @OneToOne(optional = false)
+    @OneToOne
     @JoinColumn (name = "shipping_ID", referencedColumnName = "shipping_ID")
-    private Shipping shipping;
+    private Shipping shippingID;
 
-    @OneToOne(optional= false)
-    @JoinColumn (name = "order_Details_ID",referencedColumnName = "order_Details_ID")
-    private OrderDetails orderDetails;
+    @ManyToOne
+    @JoinColumn (name = "car_ID",referencedColumnName = "car_ID")
+    private Car carID;
 
     private String status;
 

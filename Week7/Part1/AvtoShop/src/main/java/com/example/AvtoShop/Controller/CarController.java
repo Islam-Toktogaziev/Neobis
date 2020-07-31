@@ -23,10 +23,10 @@ public class CarController {
         return carRepository.findAll();
     }
 
-    @GetMapping ("/cars/{id}")
-    public Car one (@PathVariable Long id){
-        return carRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(id) );
+    @GetMapping ("/cars/{carID}")
+    public Car one (@PathVariable Long carID){
+        return carRepository.findById(carID)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find car ", carID) );
     }
 
     @PostMapping ("/cars")
@@ -34,9 +34,9 @@ public class CarController {
         return carRepository.save(car);
     }
 
-    @PutMapping ("/cars/{id}")
-    public Car updateCar (@RequestBody Car newCar, @PathVariable Long id){
-        return carRepository.findById(id)
+    @PutMapping ("/cars/{carID}")
+    public Car updateCar (@RequestBody Car newCar, @PathVariable Long carID){
+        return carRepository.findById(carID)
                 .map(car -> {
                     car.setCarName(newCar.getCarName());
                     car.setColor(newCar.getColor());
@@ -45,12 +45,12 @@ public class CarController {
                     car.setCarType(newCar.getCarType());
                     return carRepository.save(car);
                 })
-                .orElseThrow(() -> new ResourceNotFoundException(id) );
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find car ", carID) );
     }
 
-    @DeleteMapping ("/cars/{id}")
-    public void deleteCar (@PathVariable Long id){
-        carRepository.deleteById(id);
+    @DeleteMapping ("/cars/{carID}")
+    public void deleteCar (@PathVariable Long carID){
+        carRepository.deleteById(carID);
     }
 
 }
