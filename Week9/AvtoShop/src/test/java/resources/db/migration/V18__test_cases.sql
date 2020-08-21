@@ -37,6 +37,14 @@ insert into employees (employee_id, address, email, employee_name, number, salar
            '0123456789',
            '25000',
            1
+    ),(
+        2,
+        'Bishkek 312',
+        'qwe123@gmail.com',
+        'Arthur',
+        '0123456789',
+        '25000',
+        1
     );
 
 insert into customers (customer_id, address, customer_name, email, number, reputation_id)
@@ -67,7 +75,7 @@ insert into shipping (shipping_id, shipping_cost, shipping_type, region_id)
         2,
     2500,
     'Samovyvoz',
-    2
+    1
         );
 
 insert into cars (car_id, car_name, color, engine_displacement, car_type_id, price_id, brand_id)
@@ -101,7 +109,7 @@ insert into orders (order_id, status, car_id, customer_id, shipping_id,created_a
     ),(
                  2,
                  'ready',
-                 2,
+                 1,
                  1,
                  1,
                  STR_TO_DATE('18/02/2019 11:15:45','%d/%m/%Y %H:%i:%s'),
@@ -140,4 +148,14 @@ values (
            1,
            STR_TO_DATE('18/02/2019 11:15:45','%d/%m/%Y %H:%i:%s'),
         STR_TO_DATE('18/02/2019 11:15:45','%d/%m/%Y %H:%i:%s')
-       );
+       ),(
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    STR_TO_DATE('18/02/2019 11:15:45','%d/%m/%Y %H:%i:%s'),
+    STR_TO_DATE('18/02/2019 11:15:45','%d/%m/%Y %H:%i:%s')
+);

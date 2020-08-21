@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/resources/**",
                         "/registration").permitAll()
 
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
 
                 .formLogin()

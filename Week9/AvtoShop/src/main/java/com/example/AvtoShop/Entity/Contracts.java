@@ -44,6 +44,6 @@ public class Contracts extends AuditModel {
 
     @OneToOne
     @JoinColumn (name = "shipping_ID", referencedColumnName = "shipping_ID")
-    private Orders shippingID;
+    private Shipping shippingID;
 
 }

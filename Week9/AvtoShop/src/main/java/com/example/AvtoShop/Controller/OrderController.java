@@ -33,7 +33,7 @@ public class OrderController {
 
     @GetMapping ("/customers/{customerID}/orders")
     public List<Orders> getAllByCustomerID(@PathVariable (value = "customerID") Long customerID){
-        return orderRepository.findByCustomerID(customerID);
+        return orderRepository.findByCustomerID(customerRepository.findById(customerID));
     }
 
     @GetMapping ("/customers/{customerID}/orders/{orderID}")
@@ -42,9 +42,7 @@ public class OrderController {
         if (!customerRepository.existsById(customerID)){
             throw new ResourceNotFoundException("Could not find customer ",customerID);
         }
-        return orderRepository.findById(orderID)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find order ",orderID));
-
+        return orderRepository.findByOrderIDAndCustomerID(orderID,customerRepository.findById(customerID));
     }
 
 
@@ -76,7 +74,7 @@ public class OrderController {
     @DeleteMapping("/customers/{customerID}/orders/{orderID}")
     public ResponseEntity<?> deleteOrder (@PathVariable (value = "customerID") Long customerID,
                                           @PathVariable (value = "orderID") Long orderID){
-        return orderRepository.findByOrderIDAndCustomerID(orderID,customerID).map(orders -> {
+        return orderRepository.findAllByOrderIDAndCustomerID(orderID,customerRepository.findById(customerID)).map(orders -> {
             orderRepository.delete(orders);
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException("Could not find order ",orderID));

@@ -14,7 +14,7 @@ alter table contracts add constraint FK5yknvfmbs6bdjclgsgi0iv80k foreign key (or
 
 alter table contracts add constraint FKt5atsteaw65mg24uibbwed85y foreign key (price_id) references price_list (price_id);
 
-alter table contracts add constraint FK2v2425lub4bbrnrhkuif8st1g foreign key (shipping_id) references orders (shipping_id);
+alter table contracts add constraint FK2v2425lub4bbrnrhkuif8st1g foreign key (shipping_id) references shipping (shipping_id);
 
 alter table customers add constraint FKnocgjt6jhrsogjs2ocp7vebx5 foreign key (reputation_id) references reputation (reputation_id);
 

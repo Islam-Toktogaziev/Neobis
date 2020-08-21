@@ -34,9 +34,15 @@ public class ContractController {
         return contractRepository.findAll();
     }
 
+    @GetMapping ("/contracts/{contractID}")
+    public Contracts one(@PathVariable Long contractID){
+        return contractRepository.findById(contractID)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find contract with id ", contractID));
+    }
+
     @GetMapping ("/customers/{customerID}/contracts")
-    public List<Contracts> getAllByCustomerID (@PathVariable(value = "customerID") Long id){
-        return contractRepository.findByCustomerID(id);
+    public List<Contracts> getAllByCustomerID (@PathVariable(value = "customerID") Long customerID){
+        return contractRepository.findByCustomerID(customerRepository.findById(customerID));
     }
 
     @GetMapping ("/customers/{customerID}/contracts/{contractID}")
@@ -45,14 +51,12 @@ public class ContractController {
         if (!customerRepository.existsById(customerID)){
             throw new ResourceNotFoundException("Could not find customer ",customerID);
         }
-        return contractRepository.findById(contractID)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find contract ",contractID));
-
+        return contractRepository.findByContractIDAndCustomerID(contractID, customerRepository.findById(customerID));
     }
 
     @GetMapping ("/employees/{employeeID}/contracts")
-    public List<Contracts> getAllByEmployeeID (@PathVariable(value = "employeeID") Long id){
-        return contractRepository.findByEmployeeID(id);
+    public List<Contracts> getAllByEmployeeID (@PathVariable(value = "employeeID") Long employeeID){
+        return contractRepository.findByEmployeeID(employeeRepository.findById(employeeID));
     }
 
     @GetMapping ("/employees/{employeeID}/contracts/{contractID}")
@@ -61,9 +65,7 @@ public class ContractController {
         if (!employeeRepository.existsById(employeeID)){
             throw new ResourceNotFoundException("Could not find customer ",employeeID);
         }
-        return contractRepository.findById(contractID)
-                .orElseThrow(() -> new ResourceNotFoundException("Could not find contract ",contractID));
-
+        return contractRepository.findByContractIDAndEmployeeID(contractID,employeeRepository.findById(employeeID));
     }
 
     @PostMapping("/customers/{customerID}/contracts")
