@@ -2,9 +2,7 @@ package com.example.AvtoShop.Controller;
 
 
 import com.example.AvtoShop.Entity.Orders;
-import com.example.AvtoShop.Exceptions.ResourceNotFoundException;
-import com.example.AvtoShop.Repository.CustomerRepository;
-import com.example.AvtoShop.Repository.OrderRepository;
+import com.example.AvtoShop.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,45 +12,30 @@ import java.util.List;
 @RestController
 public class OrderController {
 
-    private final OrderRepository orderRepository;
-
-    private final CustomerRepository customerRepository;
-
-
     @Autowired
-    public OrderController (OrderRepository orderRepository,
-                            CustomerRepository customerRepository){
-        this.orderRepository = orderRepository;
-        this.customerRepository = customerRepository;
-    }
+    private OrderService orderService;
 
     @GetMapping ("/orders")
     public List<Orders> all(){
-        return orderRepository.findAll();
+        return orderService.getAllFromOrders();
     }
 
     @GetMapping ("/customers/{customerID}/orders")
     public List<Orders> getAllByCustomerID(@PathVariable (value = "customerID") Long customerID){
-        return orderRepository.findByCustomerID(customerRepository.findById(customerID));
+        return orderService.getAllByCustomerIDFromOrders(customerID);
     }
 
     @GetMapping ("/customers/{customerID}/orders/{orderID}")
     public Orders one(@PathVariable (value = "customerID") Long customerID,
                       @PathVariable (value = "orderID") Long orderID){
-        if (!customerRepository.existsById(customerID)){
-            throw new ResourceNotFoundException("Could not find customer ",customerID);
-        }
-        return orderRepository.findByOrderIDAndCustomerID(orderID,customerRepository.findById(customerID));
+        return orderService.getOneByCustomerIDFromOrders(customerID,orderID);
     }
 
 
     @PostMapping ("/customers/{customerID}/orders")
     public Orders createOrder (@PathVariable (value = "customerID") Long customerID,
                             @RequestBody Orders orders) {
-        return customerRepository.findById(customerID).map(customer -> {
-            orders.setCustomerID(customer);
-            return orderRepository.save(orders);
-        }).orElseThrow(() -> new ResourceNotFoundException("Could not find customer ",customerID));
+        return orderService.createOrder(customerID,orders);
     }
 
 
@@ -60,23 +43,13 @@ public class OrderController {
     public Orders updateOrder (@PathVariable (value = "customerID") Long customerID,
                                @PathVariable (value = "orderID") Long orderID,
                                @RequestBody Orders newOrders){
-        if (!customerRepository.existsById(customerID)){
-            throw new ResourceNotFoundException("Could not find customer ",customerID);
-        }
-
-        return orderRepository.findById(orderID).map(orders -> {
-            orders.setStatus(newOrders.getStatus());
-            return orderRepository.save(orders);
-        }).orElseThrow(() -> new ResourceNotFoundException("Could not find order ",orderID));
+        return orderService.updateOrder(customerID,orderID,newOrders);
     }
 
 
     @DeleteMapping("/customers/{customerID}/orders/{orderID}")
     public ResponseEntity<?> deleteOrder (@PathVariable (value = "customerID") Long customerID,
                                           @PathVariable (value = "orderID") Long orderID){
-        return orderRepository.findAllByOrderIDAndCustomerID(orderID,customerRepository.findById(customerID)).map(orders -> {
-            orderRepository.delete(orders);
-            return ResponseEntity.ok().build();
-        }).orElseThrow(() -> new ResourceNotFoundException("Could not find order ",orderID));
+        return orderService.deleteOrder(customerID,orderID);
     }
 }

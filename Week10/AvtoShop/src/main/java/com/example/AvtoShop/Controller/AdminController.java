@@ -12,4 +12,10 @@ public class AdminController {
         return "<h1>Welcome Admin</h1>";
     }
 
+    @GetMapping("/auth/admin")
+    public String adminJWT() {
+
+        return "<h1>Welcome Admin. You authenticated with JWT</h1>";
+    }
+
 }

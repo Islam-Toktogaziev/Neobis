@@ -57,13 +57,11 @@ public class MultiHttpSecurityConfig  {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
+                    .antMatcher("/auth/**")
                     .httpBasic().disable()
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/", "/cars/**",
-                            "/resources/**",
-                            "/registration").permitAll()
+                    .antMatchers("/auth/admin/**").hasRole("ADMIN")
                     .antMatchers("/auth").permitAll()
                     .anyRequest().authenticated()
                     .and()
@@ -95,8 +93,7 @@ public class MultiHttpSecurityConfig  {
                     .httpBasic().disable()
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/auth").permitAll()
-                    .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/").permitAll()
                     .antMatchers("/login").permitAll()
                     .antMatchers("/resources/**").permitAll()
