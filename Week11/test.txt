@@ -1,0 +1,72 @@
+1. Add customer
+2. POST /Customers
+3.	customerName
+	reputationID
+	address
+	email
+	number
+4. 1 (201 Created)
+---------------------------------
+1. Get all of customers
+2. GET /Customers
+3.
+4.
+[
+    {
+        "customerID": 1,
+        "customerName": "Ice Cube",
+        "reputationID": 5,
+        "address": "LA",
+        "email": "ColdestMan@gmail.com",
+        "number": "0999999999"
+    },
+    {
+        "customerID": 2,
+        "customerName": "Jigan",
+        "reputationID": 5,
+        "address": "Bishkek",
+        "email": "ABSasd@gmail.com",
+        "number": "0123499999"
+    },
+    {
+        "customerID": 3,
+        "customerName": "James Bond",
+        "reputationID": 1,
+        "address": "Bishkek",
+        "email": "ABS@gmail.com",
+        "number": "0123456789"
+    }
+] (200 OK)
+---------------------------------
+1. Get just one customer
+2. GET /Customers/{id}
+3.	customerID
+4. {
+    "customerID": 1,
+    "customerName": "Ice Cube",
+    "reputationID": 5,
+    "address": "LA",
+    "email": "ColdestMan@gmail.com",
+    "number": "0999999999"
+} (200 OK)
+---------------------------------
+1. Update/change some customer data
+2. PUT /Customers/{id}
+3.	customerName
+	reputationID
+	address
+	email
+	number
+4. {
+    "customerID": 1,
+    "customerName": "James Bond",
+    "reputationID": 1,
+    "address": "Bishkek",
+    "email": "ABS@gmail.com",
+    "number": "0123456789"
+} (200 OK)
+---------------------------------
+1. DELETE customer
+2. DELETE /Customers/{id}
+3.	customerID
+4. 1 (200 OK)

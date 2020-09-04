@@ -1,0 +1,41 @@
+version: '3.7'
+
+# Define services
+services:
+  backend:
+   depends_on:
+    - custommysql
+   build:
+    context: ./
+    dockerfile: Dockerfile
+   ports:
+    - "8081:8081"
+   restart: always
+   environment:
+    SPRING_DATASOURCE_URL: jdbc:mysql://custommysql:3306/AvtoShop?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+    SPRING_DATASOURCE_USERNAME: root
+    SPRING_DATASOURCE_PASSWORD: password
+   networks:
+    - backend
+
+  custommysql:
+   container_name: custommysql
+   image: mysql
+   restart: always
+   environment:
+    MYSQL_DATABASE: AvtoShop
+    MYSQL_USER: root
+    MYSQL_PASSWORD: password
+    MYSQL_ROOT_PASSWORD: password
+   networks:
+    - backend
+
+  #Docker Networks
+networks:
+  backend:
+    driver: bridge
+
+  #Volumes
+volumes:
+  dbdata:
+    driver: local
